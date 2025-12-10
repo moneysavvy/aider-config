@@ -1,0 +1,51 @@
+# Aider Configuration File
+# This file contains persistent settings for Aider AI coding assistant
+# Place this in your home directory (~/.aider.conf.yml) or project root
+
+# Model Configuration
+# Use Ollama for local LLM inference
+model: ollama/qwen2.5-coder:latest
+
+# Alternative models you can switch to:
+# model: ollama/deepseek-coder-v2:latest
+# model: ollama/codellama:latest
+# model: openrouter/anthropic/claude-3.5-sonnet
+
+# Editor Model (for smaller edits)
+editor-model: ollama/qwen2.5-coder:7b
+
+# Git Integration
+auto-commits: true
+commit-prompt: true
+dirty-commits: true
+
+# Code Editing Preferences
+edit-format: diff
+pretty: true
+stream: true
+
+# File Management
+auto-lint: true
+lint-cmd: "ruff check"
+
+# Chat Settings
+show-diffs: true
+show-repo-map: true
+show-model-warnings: true
+
+# Performance
+map-tokens: 1024
+env-file: .env
+
+# Voice Settings (optional)
+# voice-language: en
+
+# Cache Settings
+cache-prompts: true
+
+# Test Command
+test-cmd: "pytest"
+
+# Additional Settings
+verbose: false
+message-file: .aider.chat.history.md
