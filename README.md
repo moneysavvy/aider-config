@@ -27,11 +27,17 @@ cp .aider.conf.yml ~/.aider.conf.yml
 ### 3. Install Aider (if not already installed)
 
 ```bash
-# Using pip
+# Using uv tool (recommended - handles PATH automatically)
+uv tool install --force --python python3.12 aider-chat@latest
+
+# Or using pipx
+pipx install aider-chat
+
+# Or using pip in a venv (requires manual PATH setup)
 pip install aider-chat
 
-# Or using pipx (recommended)
-pipx install aider-chat
+# If using pip install, add to your shell config (~/.zshrc or ~/.bashrc):
+export PATH="$HOME/.venv/bin:$PATH"
 ```
 
 ### 4. Set up Ollama (for local LLM inference)
@@ -143,6 +149,32 @@ git config --global user.email "your.email@example.com"
 ```
 
 ## 🐛 Troubleshooting
+
+### Aider command not found
+```bash
+# Check if aider is in PATH
+which aider
+
+# If not found, find your aider installation
+find ~ -maxdepth 5 -name "aider" -type f 2>/dev/null | grep bin
+
+# Create symlink to a location already in PATH
+ln -sf ~/.venv/bin/aider ~/bin/aider
+# OR add to PATH in ~/.zshrc or ~/.bashrc:
+export PATH="$HOME/.venv/bin:$PATH"
+```
+
+### --model flag not working (always uses same model)
+```bash
+# Check if environment variables are overriding settings
+echo $AIDER_MODEL
+
+# Check ~/.aider.env for hardcoded models
+cat ~/.aider.env
+
+# To allow --model flag to work, comment out AIDER_MODEL in ~/.aider.env
+# And comment out model: line in ~/.aider.conf.yml
+```
 
 ### Aider not finding config
 ```bash

@@ -3,16 +3,15 @@
 # Place this in your home directory (~/.aider.conf.yml) or project root
 
 # Model Configuration
-# Use Ollama for local LLM inference
-model: ollama/qwen2.5-coder:latest
-
-# Alternative models you can switch to:
-# model: ollama/deepseek-coder-v2:latest
-# model: ollama/codellama:latest
+# Uncomment and set your preferred model, or use --model flag
+# model: ollama/qwen2.5-coder:latest
+# model: gemini/gemini-2.0-flash-exp
 # model: openrouter/anthropic/claude-3.5-sonnet
+# model: openai/gpt-4
 
-# Editor Model (for smaller edits)
-editor-model: ollama/qwen2.5-coder:7b
+# Editor Model (for smaller edits) - uncomment if needed
+# editor-model: ollama/qwen2.5-coder:7b
+# editor-model: gemini/gemini-2.0-flash-exp
 
 # Git Integration
 auto-commits: true
